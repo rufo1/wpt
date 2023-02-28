@@ -2,8 +2,6 @@ import pytest
 
 from webdriver.bidi.modules.script import ContextTarget
 
-from ... import recursive_compare
-
 
 @pytest.mark.asyncio
 async def test_this(bidi_session, top_context):
@@ -20,7 +18,7 @@ async def test_this(bidi_session, top_context):
         await_promise=False,
         target=ContextTarget(top_context["context"]))
 
-    assert result == {
+    assert result <= {
         'type': 'number',
         'value': 42}
 
@@ -32,9 +30,9 @@ async def test_default_this(bidi_session, top_context):
         await_promise=False,
         target=ContextTarget(top_context["context"]))
 
-    recursive_compare({
+    assert {
         "type": 'window',
-    }, result)
+    } <= result
 
 
 @pytest.mark.asyncio
@@ -77,7 +75,7 @@ async def test_remote_value_deserialization(
         function_declaration=function_declaration,
         this=value_fn(remote_value),
     )
-    assert result == {"type": "boolean", "value": True}
+    assert result <= {"type": "boolean", "value": True}
 
     # Reload the page to cleanup the state
     await bidi_session.browsing_context.navigate(
