@@ -27,6 +27,7 @@ ctx.lineTo(10, 40);
 ctx.lineTo(40, 40);
 ctx.lineTo(40, 10);
 ctx.lineTo(10, 10);
+
 _assertSame(ctx.isPointInPath(5, 5), true, "ctx.isPointInPath(5, 5)", "true");
 _assertSame(ctx.isPointInPath(25, 5), true, "ctx.isPointInPath(25, 5)", "true");
 _assertSame(ctx.isPointInPath(45, 5), true, "ctx.isPointInPath(45, 5)", "true");

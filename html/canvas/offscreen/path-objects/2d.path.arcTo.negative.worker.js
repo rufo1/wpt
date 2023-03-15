@@ -17,6 +17,8 @@ var canvas = new OffscreenCanvas(100, 50);
 var ctx = canvas.getContext('2d');
 
 assert_throws_dom("INDEX_SIZE_ERR", function() { ctx.arcTo(0, 0, 0, 0, -1); });
+var path = new Path2D();
+assert_throws_dom("INDEX_SIZE_ERR", function() { path.arcTo(10, 10, 20, 20, -5); });
 t.done();
 
 });

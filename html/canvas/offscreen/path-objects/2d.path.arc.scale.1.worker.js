@@ -34,6 +34,7 @@ ctx.arc(25, -25, 24, 0, 2*Math.PI, false);
 ctx.moveTo(25, 125);
 ctx.arc(25, 125, 24, 0, 2*Math.PI, false);
 ctx.fill();
+
 _assertPixel(canvas, 0,0, 0,255,0,255);
 _assertPixel(canvas, 50,0, 0,255,0,255);
 _assertPixel(canvas, 99,0, 0,255,0,255);

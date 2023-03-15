@@ -18,6 +18,7 @@ var ctx = canvas.getContext('2d');
 
 ctx.fillStyle = '#0f0';
 ctx.fillRect(0, 0, 100, 50);
+
 ctx.fillStyle = '#f00';
 ctx.moveTo(-10, -10);
 ctx.lineTo(110, -10);
@@ -28,6 +29,7 @@ ctx.lineTo(0, 50);
 ctx.lineTo(100, 50);
 ctx.lineTo(100, 0);
 ctx.fill();
+
 _assertPixel(canvas, 50,25, 0,255,0,255);
 t.done();
 
