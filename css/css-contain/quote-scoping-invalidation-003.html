@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang=en>
+  <meta charset=utf-8>
+  <title>CSS-contain test: style containment and open-quote</title>
+  <link rel="author" title="Daniil Sakhapov" href="sakhapov@google.com">
+  <meta name=assert content="style containment with quotes invalidation">
+  <link rel="match" href="reference/quote-scoping-invalidation-003-ref.html">
+  <link rel=help href="https://drafts.csswg.org/css-contain-1/#containment-style">
+
+<style>
+div {
+  quotes: "A" "Z" "1" "9" "(" ")" "+" "-";
+}
+div::before, span::before {
+  content: open-quote;
+}
+div::after {
+  content: close-quote;
+}
+</style>
+
+<p>Test passes if the text below is "A119" (not including the quotation marks).<p>
+<div id="div">
+  <h1 id="h1">
+    <span id="span1"></span>
+    <span id="span2"></span>
+  </h1>
+  <span></span>
+</div>
+
+<script>
+  document.body.offsetTop;
+  h1.style.contain = "style";
+  document.body.offsetTop;
+  h1.style.contain = "";
+  document.body.offsetTop;
+  h1.style.contain = "style";
+  document.body.offsetTop;
+  span1.remove();
+</script>
