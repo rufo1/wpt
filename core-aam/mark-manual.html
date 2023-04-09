@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>deletion</title>
+    <title>mark</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <link rel="stylesheet" href="/wai-aria/scripts/manual.css">
     <script src="/resources/testharness.js"></script>
@@ -21,13 +21,13 @@
                   "property",
                   "role",
                   "is",
-                  "ROLE_CONTENT_DELETION"
+                  "ROLE_MARK"
                ],
                [
                   "property",
                   "objectAttributes",
                   "contains",
-                  "xml-roles:deletion"
+                  "xml-roles:mark"
                ]
             ],
             "AXAPI" : [
@@ -39,15 +39,15 @@
                ],
                [
                   "property",
-                  "AXSubrole",
+                  "AXRoleDescription",
                   "is",
-                  "AXDeleteStyleGroup"
+                  "highlight"
                ],
                [
                   "result",
                   "AXAttributedStringForTextMarkerRange"
                   "contains",
-                  "AXIsSuggestedDeletion"
+                  "AXHighlight"
                ]
             ],
             "IAccessible2" : [
@@ -55,7 +55,13 @@
                   "property",
                   "role",
                   "is",
-                  "IA2_ROLE_CONTENT_DELETION"
+                  "IA2_ROLE_MARK"
+               ],
+               [
+                  "property",
+                  "objectAttributes",
+                  "contains",
+                  "xml-roles:mark"
                ]
             ],
             "UIA" : [
@@ -63,13 +69,7 @@
                   "property",
                   "ControlType",
                   "is",
-                  "Text"
-               ],
-               [
-                  "property",
-                  "LocalizedControlType",
-                  "is",
-                  "del"
+                  "Group"
                ]
             ]
          },
@@ -77,15 +77,15 @@
          "type" : "test"
       }
    ],
-   "title" : "deletion"
+   "title" : "mark"
 }
 
     ) ;
     </script>
   </head>
   <body>
-  <p>This test examines the ARIA properties for deletion.</p>
-  <div role="deletion" id="test">content</div>
+  <p>This test examines the ARIA properties for mark.</p>
+  <div role="mark" id="test">content</div>
   <div id="manualMode"></div>
   <div id="log"></div>
   <div id="ATTAmessages"></div>
