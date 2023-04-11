@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<link rel=author href="mailto:jarhar@chromium.org">
+<link rel=help href="https://github.com/w3c/csswg-drafts/issues/4441">
+<script src="/resources/testharness.js"></script>
+<script src="/resources/testharnessreport.js"></script>
+<script src="/css/support/interpolation-testcommon.js"></script>
+
+<body>
+<script>
+test_no_interpolation({
+  property: 'grid-auto-columns',
+  from: 'initial',
+  to: '123px'
+});
+
+test_no_interpolation({
+  property: 'grid-auto-flow',
+  from: 'initial',
+  to: 'column'
+});
+
+test_no_interpolation({
+  property: 'grid-auto-rows',
+  from: 'initial',
+  to: '123px'
+});
+
+test_no_interpolation({
+  property: 'grid-column-end',
+  from: 'initial',
+  to: '123'
+});
+
+test_no_interpolation({
+  property: 'grid-column-start',
+  from: 'initial',
+  to: '123'
+});
+
+test_no_interpolation({
+  property: 'grid-row-end',
+  from: 'initial',
+  to: '123'
+});
+
+test_no_interpolation({
+  property: 'grid-row-start',
+  from: 'initial',
+  to: '123'
+});
+
+test_no_interpolation({
+  property: 'grid-template-areas',
+  from: 'initial',
+  to: '"."'
+});
+</script>
