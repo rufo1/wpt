@@ -6,13 +6,19 @@
 <script src="/web-animations/testcommon.js"></script>
 <script src="support/testcommon.js"></script>
 <style>
-  main > div {
+  #scroller1 {
     overflow: hidden;
-    width: 100px;
+    width: 300px;
     height: 100px;
   }
-  main > div > div {
+  #scroller2 {
+    overflow: hidden;
+    width: 250px;
     height: 200px;
+  }
+  #content {
+    width: 200px;
+    height: 400px;
   }
   @keyframes expand {
     from { width: 100px; }
@@ -28,11 +34,17 @@
     animation-duration: 600s;
     animation-timing-function: steps(10, end);
   }
+  #container {
+    position: absolute;
+  }
 </style>
 <main>
-  <div id=scroller1><div></div></div>
-  <div id=scroller2><div></div></div>
-  <div id=container></div>
+  <div id=scroller1>
+    <div id=scroller2>
+      <div id="content"></div>
+      <div id=container></div>
+    </div>
+  </div>
 </main>
 <script>
   // Force layout of scrollers.
@@ -42,7 +54,7 @@
   // Note the steps(10, end) timing function and height:100px. (10px scroll
   // resolution).
   scroller1.scrollTop = 20;
-  scroller2.scrollTop = 40;
+  scroller2.scrollTop = 80;
 
   function insertElement() {
     let element = document.createElement('div');
