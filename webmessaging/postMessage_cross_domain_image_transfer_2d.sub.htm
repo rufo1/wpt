@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>Web Messaging - cross-domain image transfer</title>
+<script src=/resources/testharness.js></script>
+<script src=/resources/testharnessreport.js></script>
+<script type="text/javascript" charset="utf-8">
+function PostMessageTest() {
+  var t = async_test("Cross-domain image transfer");
+
+  // Create a gray image.
+  var size = 4
+  var sourceCanvas = document.createElement('canvas');
+  sourceCanvas.width = sourceCanvas.height = size;
+  var ctx = sourceCanvas.getContext('2d');
+  ctx.fillStyle = "gray"
+  ctx.fillRect(0, 0, size, size);
+
+  var expected_pixels = "[128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255,128,128,128,255]"
+
+  addEventListener('message', t.step_func(function(e) {
+      assert_equals(e.data, expected_pixels)
+      t.done()
+  }));
+
+  createImageBitmap(sourceCanvas).then( bitmap => {
+    document.getElementById("receiver").contentWindow.postMessage({image: bitmap}, "*", [bitmap]);
+  });
+}
+</script>
+
+
+<body>
+    <h1>Web Messaging - cross-domain image transfer</h1>
+    <iframe id="receiver" onload="PostMessageTest()" src="{{location[scheme]}}://{{domains[www]}}:{{location[port]}}/webmessaging/support/cross-domain-image-receive.htm"></iframe>
+</body>
+</html>
